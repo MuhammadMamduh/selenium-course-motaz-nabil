@@ -16,7 +16,7 @@ public class LoginPage extends PageBase
 	@FindBy(id="Password")
 	WebElement passwordTxtBox ; 
 
-	@FindBy(css="input.button-1.login-button")
+	@FindBy(css="button.button-1.login-button")
 	WebElement loginBtn ; 
 	
 	public void UserLogin(String email , String password) 
