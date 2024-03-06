@@ -10,10 +10,10 @@ public class ShoppingCartPage extends PageBase
 		super(driver);
 	}
 
-	@FindBy(name = "removefromcart")
+	@FindBy(css = "button.remove-btn")
 	WebElement removeCheck;
 
-	@FindBy(name = "updatecart")
+	@FindBy(id = "updatecart")
 	WebElement updateCartBtn;
 
 	@FindBy(css = "input.qty-input valid")
