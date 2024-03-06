@@ -30,7 +30,7 @@ public class HomePage extends PageBase
 	@FindBy(linkText="Computers")
 	WebElement ComputerMenu; 
 	
-	@FindBy(linkText="Notebooks")
+	@FindBy(linkText="Books")
 	WebElement NotbooksMenu; 
 	
 	

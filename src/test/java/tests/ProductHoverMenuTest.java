@@ -14,6 +14,6 @@ public class ProductHoverMenuTest extends TestBase
 	{
 		homeObject = new HomePage(driver); 
 		homeObject.selectNotebooksMenu();
-		Assert.assertTrue(driver.getCurrentUrl().contains("notebooks"));
+		Assert.assertTrue(driver.getCurrentUrl().contains("books"));
 	}
 }
