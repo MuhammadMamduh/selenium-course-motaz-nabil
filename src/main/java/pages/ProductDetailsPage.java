@@ -13,7 +13,7 @@ public class ProductDetailsPage extends PageBase
 	@FindBy(css="strong.current-item")
 	public WebElement productNamebreadCrumb; 
 
-	@FindBy(css="input.button-2.email-a-friend-button")
+	@FindBy(css="button.button-2.email-a-friend-button")
 	WebElement emailFriendBtn ; 
 
 	@FindBy(css="span.price-value-4")

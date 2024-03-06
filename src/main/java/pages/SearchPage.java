@@ -13,13 +13,13 @@ public class SearchPage extends PageBase
 	}
 
 	@FindBy(id="small-searchterms")
-	WebElement searchTextBox ; 
+	WebElement searchTextBox; 
 
-	@FindBy(css="input.button-1.search-box-button")
-	WebElement searchBtn ; 
+	@FindBy(css="button.button-1.search-box-button")
+	WebElement searchBtn; 
 
 	@FindBy(id="ui-id-1")
-	List<WebElement> ProductList ; 
+	List<WebElement> ProductList;
 
 	@FindBy(linkText="Apple MacBook Pro 13-inch")
 	WebElement productTitle; 
