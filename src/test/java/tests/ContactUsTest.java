@@ -4,6 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Flaky;
 import io.qameta.allure.Link;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
@@ -22,7 +25,10 @@ public class ContactUsTest extends TestBase
 	@Test
 	@Severity(SeverityLevel.CRITICAL)
 	@Description("Contact Us Test Case")
-	@Link( url = "http://google.com")
+	@Link( name = "Jira", url = "http://google.com")
+	@Epic("MP-6174")
+	@Feature("MPF-914")
+	@Flaky
 	public void UserCanUseContactUs() {
 		home = new HomePage(driver);
 		home.openContactUsPage();
