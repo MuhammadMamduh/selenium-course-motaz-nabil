@@ -29,7 +29,7 @@ public class ShoppingCartPage extends PageBase
 	@FindBy(id="termsofservice")
 	WebElement agreeCheckbox; 
 	
-	@FindBy(css="input.button-1.checkout-as-guest-button")
+	@FindBy(css="button.button-1.checkout-as-guest-button")
 	WebElement guestCheckoutBtn ; 
 
 	public void RemoveProductFromCart() {
