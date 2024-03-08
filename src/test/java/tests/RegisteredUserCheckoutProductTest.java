@@ -11,6 +11,7 @@ import pages.ProductDetailsPage;
 import pages.SearchPage;
 import pages.ShoppingCartPage;
 import pages.UserRegistrationPage;
+import utilities.Helper;
 
 public class RegisteredUserCheckoutProductTest extends TestBase
 {
@@ -31,6 +32,12 @@ public class RegisteredUserCheckoutProductTest extends TestBase
 	ShoppingCartPage cartPage ; 
 	CheckoutPage checkoutObject ; 
 	OrderDetailsPage orderObject ; 
+	String uniqueEmailForRegisteration; 
+	
+	public RegisteredUserCheckoutProductTest()
+	{
+		uniqueEmailForRegisteration = Helper.getUniqueEmail();
+	}
 
 	@Test(priority=1,alwaysRun=true)
 	public void UserCanRegisterSuccssfully() 
@@ -38,8 +45,16 @@ public class RegisteredUserCheckoutProductTest extends TestBase
 		homeObject = new HomePage(driver); 
 		homeObject.openRegistrationPage();
 		registerObject = new UserRegistrationPage(driver); 
-		registerObject.userRegistration("Moataz", "Nabil", "test852@gmail.com", "12345678");
+		registerObject.userRegistration("Moataz", "Nabil", uniqueEmailForRegisteration, "12345678");
 		Assert.assertTrue(registerObject.successMessage.getText().contains("Your registration completed"));
+	}
+	@Test(dependsOnMethods= {"UserCanRegisterSuccssfully"})
+	public void RegisteredUserMustLogin() 
+	{
+		homeObject.openLoginPage();
+		loginObject = new LoginPage(driver); 
+		loginObject.UserLogin(uniqueEmailForRegisteration, "12345678");
+		Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
 	}
 
 	@Test(priority=2)
@@ -70,9 +85,9 @@ public class RegisteredUserCheckoutProductTest extends TestBase
 		checkoutObject = new CheckoutPage(driver);
 		cartPage.openCheckoutPage();
 		checkoutObject.RegisteredUserCheckoutProduct
-		("Egypt", "test address", "123456", "32445566677", "Cairo", productName);
-		Assert.assertTrue(checkoutObject.prodcutName.isDisplayed());
-		Assert.assertTrue(checkoutObject.prodcutName.getText().contains(productName));
+		(uniqueEmailForRegisteration, "Egypt", "test address", "123456", "32445566677", "Cairo", productName);
+		Assert.assertTrue(checkoutObject.productName.isDisplayed());
+		Assert.assertTrue(checkoutObject.productName.getText().contains(productName));
 		
 		checkoutObject.confirmOrder();
 		Assert.assertTrue(checkoutObject.ThankYoulbl.isDisplayed());

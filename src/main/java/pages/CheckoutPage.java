@@ -38,26 +38,28 @@ public class CheckoutPage extends PageBase
 	@FindBy(id = "BillingNewAddress_ZipPostalCode")
 	private WebElement postCodeTxt;
 
-	@FindBy(xpath = "//*[@id=\'billing-buttons-container\']/input")
-	private WebElement continueBtn;
+	@FindBy(xpath = "//div[@id='billing-buttons-container']//child::button[contains(text(), 'Continue')]")
+	private WebElement addressContinueBtn;
 
 	@FindBy(id = "shippingoption_1")
 	private WebElement shippingMethodRdo;
 
-	@FindBy(xpath = "//*[@id=\'shipping-method-buttons-container\']/input")
-	private WebElement continueShippingBtn;
+	@FindBy(css = "button.button-1.shipping-method-next-step-button")
+	private WebElement shippingContinueBtn;
 
-	@FindBy(xpath = "//*[@id=\'payment-method-buttons-container\']/input")
-	private WebElement continuePaymentBtn;
+	@FindBy(css = "button.button-1.payment-method-next-step-button")
+	private WebElement paymentContinueBtn;
 
-	@FindBy(xpath = "//*[@id=\'payment-info-buttons-container\']/input")
-	private WebElement continueInfoBtn;
+	@FindBy(css = "button.button-1.payment-info-next-step-button")
+	private WebElement paymentInfoContinueBtn;
+
+	@FindBy(css = "button.button-1.confirm-order-next-step-button")
+	private WebElement confirmBtn;
 
 	@FindBy(css = "a.product-name")
-	public WebElement prodcutName;
+	public WebElement productName;
 
-	@FindBy(css = "input.button-1.confirm-order-next-step-button")
-	private WebElement confirmBtn;
+
 
 	@FindBy(css = "h1")
 	public WebElement ThankYoulbl;
@@ -69,21 +71,27 @@ public class CheckoutPage extends PageBase
 	private WebElement orderDetailsLink;
 
 
-	public void RegisteredUserCheckoutProduct(String countryName, String address, 
+	public void RegisteredUserCheckoutProduct(String email, String countryName, String address, 
 			String postcode, String phone, String city, String productName) throws InterruptedException {
+		
+		setTextElementText(fnTxt, "Moataz");
+		setTextElementText(lnTxt, "Nabil");
+		clearText(emailTxt);
+		setTextElementText(emailTxt, email);
+
 		select = new Select(countryList);
 		select.selectByVisibleText(countryName);
 		setTextElementText(cityTxt, city);
 		setTextElementText(addressTxt, address);
 		setTextElementText(postCodeTxt, postcode);
 		setTextElementText(phoneTxt, phone);
-		clickButton(continueBtn);
-		clickButton(shippingMethodRdo);
-		clickButton(continueShippingBtn);
+		clickButton(addressContinueBtn);
 		Thread.sleep(1000);
-		clickButton(continuePaymentBtn);
+		clickButton(shippingContinueBtn);
 		Thread.sleep(1000);
-		clickButton(continueInfoBtn);
+		clickButton(paymentContinueBtn);
+		Thread.sleep(1000);
+		clickButton(paymentInfoContinueBtn);
 	}
 
 	public void confirmOrder() throws InterruptedException 
@@ -109,12 +117,14 @@ public class CheckoutPage extends PageBase
 		setTextElementText(addressTxt, address);
 		setTextElementText(postCodeTxt, postcode);
 		setTextElementText(phoneTxt, phone);
-		clickButton(continueBtn);
+		clickButton(addressContinueBtn);
 		clickButton(shippingMethodRdo);
-		clickButton(continueShippingBtn);
+		clickButton(shippingContinueBtn);
 		Thread.sleep(2000);
-		clickButton(continuePaymentBtn);
+		clickButton(paymentContinueBtn);
 		Thread.sleep(2000);
-		clickButton(continueInfoBtn);
+		clickButton(paymentInfoContinueBtn);
+		Thread.sleep(2000);
+		clickButton(confirmBtn);
 	}
 }
