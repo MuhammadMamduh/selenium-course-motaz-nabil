@@ -25,7 +25,7 @@ public class ProductDetailsPage extends PageBase
 	@FindBy(linkText="Add your review")
 	WebElement addReviewLink; 
 
-	@FindBy(css="input.button-2.add-to-compare-list-button")
+	@FindBy(xpath="//div[@class='overview-buttons']//child::button[contains(text(), 'Add to compare list')]")
 	WebElement addToCompareBtn ; 
 	
 	@FindBy(id="add-to-cart-button-4")

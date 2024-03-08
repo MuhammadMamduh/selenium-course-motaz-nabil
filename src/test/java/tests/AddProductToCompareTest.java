@@ -32,6 +32,7 @@ public class AddProductToCompareTest extends TestBase
 		searchObject.ProductSearchUsingAutoSuggest("MacB");
 		Assert.assertTrue(detailsObject.productNamebreadCrumb.getText().contains(firstProductName));
 		detailsObject.AddProductToCompare();
+		Thread.sleep(1000);
 
 		searchObject.ProductSearchUsingAutoSuggest("Asus");
 		Assert.assertTrue(detailsObject.productNamebreadCrumb.getText().contains(secondProductName));
