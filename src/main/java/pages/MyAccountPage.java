@@ -23,10 +23,10 @@ public class MyAccountPage extends PageBase
     @FindBy(id = "ConfirmNewPassword")
     WebElement confirmPasswordTxt;
     
-    @FindBy(css = "input.button-1.change-password-button")
+    @FindBy(css = "button.button-1.change-password-button")
     WebElement ChangePasswordBtn;
     
-    @FindBy(css = "div.result")
+    @FindBy(css = "div.bar-notification.success")
     public WebElement resultLbl;
 	
 	public void openChangePasswordPage() 
