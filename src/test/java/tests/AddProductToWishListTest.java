@@ -36,7 +36,8 @@ public class AddProductToWishListTest extends TestBase
 	public void UserCanRemoveProductFromCart() {
 		wishlistObject = new WishlistPage(driver); 
 		wishlistObject.removeProductFromWishlist();
-		Assert.assertTrue(wishlistObject.EmptyCartLbl.getText().contains("The wishlist is empty!"));
+		
+		Assert.assertTrue(wishlistObject.EmptyWishListLbl.getText().contains("The wishlist is empty!"));
 	}
 
 }

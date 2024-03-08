@@ -16,17 +16,17 @@ public class WishlistPage extends PageBase
     @FindBy(css = "h1")
     public WebElement wishlistHeader;
    
-    @FindBy(name = "updatecart")
+    @FindBy(id = "updatecart")
     private WebElement updateWishlistBtn;
-    
-    @FindBy(name = "removefromcart")
+
+    @FindBy(css = "button.remove-btn")
     private WebElement removefromCartCheck;
    
     @FindBy(css = "div.no-data")
-    public WebElement EmptyCartLbl;
+    public WebElement EmptyWishListLbl;
    
     public void removeProductFromWishlist() {
+        clickButton(updateWishlistBtn); // not necessary step
         clickButton(removefromCartCheck);
-        clickButton(updateWishlistBtn);
     }
 }
