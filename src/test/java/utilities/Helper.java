@@ -27,4 +27,9 @@ public class Helper {
 			System.out.println("Excpetion while taking screenshot"+ e.getMessage());
 		}
 	}
+
+	public static String getUniqueEmail()
+	{
+		return "Mamduh" + System.currentTimeMillis() + "@gmail.com";
+	}
 }

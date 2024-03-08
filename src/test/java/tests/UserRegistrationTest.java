@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.UserRegistrationPage;
+import utilities.Helper;
 
 public class UserRegistrationTest extends TestBase
 {
@@ -19,7 +20,7 @@ public class UserRegistrationTest extends TestBase
 
 	public UserRegistrationTest()
 	{
-		uniqueEmail = "Mamduh" + System.currentTimeMillis() + "@gmail.com";
+		uniqueEmail = Helper.getUniqueEmail();
 	}
 
 	@Test(priority=1,alwaysRun=true)
