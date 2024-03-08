@@ -14,6 +14,9 @@ public class EmailPage extends PageBase{
 	@FindBy(id = "FriendEmail")
     private WebElement emailFriendTxt;
 
+    @FindBy(id = "YourEmailAddress")
+    private WebElement emailPersonalTxt;
+
     @FindBy(id = "PersonalMessage")
     private WebElement personalMessageTxt;
 
@@ -23,8 +26,13 @@ public class EmailPage extends PageBase{
     @FindBy(css = "div.result")
     public WebElement messageNotification;
     
-    public void SendEmailToFriend(String friendEmail, String personalMessage) {
+    public void SendEmailToFriend(String friendEmail, String personalEmail, String personalMessage) {
         setTextElementText(emailFriendTxt, friendEmail);
+
+        // To handle the issue of the email being sent twice
+        clearText(emailPersonalTxt);
+        setTextElementText(emailPersonalTxt, personalEmail);
+
         setTextElementText(personalMessageTxt, personalMessage);
         clickButton(sendEmailBtn);
     }
