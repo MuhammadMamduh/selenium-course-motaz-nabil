@@ -9,6 +9,7 @@ import pages.ProductDetailsPage;
 import pages.ProductReviewPage;
 import pages.SearchPage;
 import pages.UserRegistrationPage;
+import utilities.Helper;
 
 public class AddProductReviewTest extends TestBase
 {
@@ -26,7 +27,13 @@ public class AddProductReviewTest extends TestBase
 	String productName = "Apple MacBook Pro 13-inch"; 
 	SearchPage searchObject ; 
 	ProductDetailsPage detailsObject ;
-	ProductReviewPage reviewObject ; 
+	ProductReviewPage reviewObject ;
+	String uniqueEmailForRegisteration;
+
+	public AddProductReviewTest()
+	{
+		uniqueEmailForRegisteration = Helper.getUniqueEmail();
+	}
 
 	// 1- User Registration 
 	@Test(priority=1,alwaysRun=true)
@@ -35,10 +42,17 @@ public class AddProductReviewTest extends TestBase
 		homeObject = new HomePage(driver); 
 		homeObject.openRegistrationPage();
 		registerObject = new UserRegistrationPage(driver); 
-		registerObject.userRegistration("Moataz", "Nabil", "test0987@gmail.com", "12345678");
+		registerObject.userRegistration("Moataz", "Nabil", uniqueEmailForRegisteration, "12345678");
 		Assert.assertTrue(registerObject.successMessage.getText().contains("Your registration completed"));
 	}
-
+	@Test(dependsOnMethods= {"UserCanRegisterSuccssfully"})
+	public void RegisteredUserCanLogin() 
+	{
+		homeObject.openLoginPage();
+		loginObject = new LoginPage(driver); 
+		loginObject.UserLogin(uniqueEmailForRegisteration, "12345678");
+		Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
+	}
 	// 2- Search For Product
 	@Test(priority=2)
 	public void UserCanSearchWithAutoSuggest() 
