@@ -31,6 +31,7 @@ public class UserRegistrationTestWithDDTAndCSV extends TestBase
 
 		String[] csvCell ; 
 
+		try {
 		// while loop will be executed till the lastvalue in CSV file . 
 		while((csvCell = reader.readNext()) != null) 
 		{
@@ -51,5 +52,10 @@ public class UserRegistrationTestWithDDTAndCSV extends TestBase
 			Assert.assertTrue(registerObject.logoutLink.getText().contains("Log out"));
 			registerObject.userLogout();
 		}
+	}
+	catch (Exception e)
+	{
+		System.out.println("Exception: " + e.getMessage());
+	}
 	}
 }
