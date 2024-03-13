@@ -2,6 +2,7 @@ package tests;
 
 import java.util.HashMap;
 
+import org.junit.AfterClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -46,6 +47,7 @@ public class TestBase extends AbstractTestNGCucumberTests
 		return options;
 	}
 
+
 	@BeforeSuite
 	@Parameters({"browser"})
 	public void startDriver(@Optional("chrome") String browserName) 
@@ -70,7 +72,7 @@ public class TestBase extends AbstractTestNGCucumberTests
 			driver = new SafariDriver(); 
 		}
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(120));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.navigate().to("http://demo.nopcommerce.com/");
 	} 
 
