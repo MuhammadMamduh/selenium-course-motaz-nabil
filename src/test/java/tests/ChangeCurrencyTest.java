@@ -26,9 +26,10 @@ public class ChangeCurrencyTest extends TestBase
 	{
 		try {
 			searchObject = new SearchPage(driver); 
-			searchObject.ProductSearchUsingAutoSuggest("MacB");
+			searchObject.ProductSearchUsingAutoSuggest("MacBoo");
 			detailsObject = new ProductDetailsPage(driver); 
 			Assert.assertEquals(detailsObject.productNamebreadCrumb.getText(), productName);
+			System.out.println(detailsObject.productPricelbl.getText());
 			Assert.assertTrue(detailsObject.productPricelbl.getText().contains("€"));
 			System.out.println(detailsObject.productPricelbl.getText());
 		} catch (Exception e) {

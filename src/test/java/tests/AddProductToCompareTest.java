@@ -29,7 +29,7 @@ public class AddProductToCompareTest extends TestBase
 		detailsObject = new ProductDetailsPage(driver);
 		compareObject = new ComparePage(driver);
 
-		searchObject.ProductSearchUsingAutoSuggest("MacB");
+		searchObject.ProductSearchUsingAutoSuggest("MacBoo");
 		Assert.assertTrue(detailsObject.productNamebreadCrumb.getText().contains(firstProductName));
 		detailsObject.AddProductToCompare();
 		Thread.sleep(1000);
