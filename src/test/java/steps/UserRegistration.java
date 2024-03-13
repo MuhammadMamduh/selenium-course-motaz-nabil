@@ -1,9 +1,7 @@
 package steps;
 
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.*;
 import junit.framework.Assert;
 import pages.HomePage;
 import pages.UserRegistrationPage;
@@ -11,7 +9,7 @@ import tests.TestBase;
 
 public class UserRegistration extends TestBase {
 
-	HomePage homeObject ; 
+	HomePage homeObject ;
 	UserRegistrationPage registerObject ; 
 
 	@Given("^the user in the home page$")

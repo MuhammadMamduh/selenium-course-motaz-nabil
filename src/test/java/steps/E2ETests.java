@@ -1,8 +1,6 @@
 package steps;
 
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.*;
 import org.testng.Assert;
 import pages.*;
 import tests.TestBase;
@@ -41,8 +39,8 @@ public class E2ETests extends TestBase {
 		cartObject.openCheckoutPageAsGuest();
 		checkoutObject.CheckoutProduct("test", "user", "Egypt"
 				, "testuser1@test.com", "test address", "123456", "32445566677", "Cairo", productName);
-		Assert.assertTrue(checkoutObject.prodcutName.isDisplayed());
-		Assert.assertTrue(checkoutObject.prodcutName.getText().contains(productName));
+		Assert.assertTrue(checkoutObject.productName.isDisplayed());
+		Assert.assertTrue(checkoutObject.productName.getText().contains(productName));
 		checkoutObject.confirmOrder();
 		Assert.assertTrue(checkoutObject.ThankYoulbl.isDisplayed());
 		

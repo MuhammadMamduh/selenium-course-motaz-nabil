@@ -1,6 +1,6 @@
 package runner;
 
-import cucumber.api.CucumberOptions;
+import io.cucumber.testng.*;
 import tests.TestBase;
 
 
@@ -9,6 +9,5 @@ import tests.TestBase;
 ,plugin= {"pretty","html:target/cucumber-html-report"})
 public class TestRunner extends TestBase
 {
-	
 
 }
