@@ -1,7 +1,14 @@
 package tests;
 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import pages.ProductDetailsPage;
 import pages.SearchPage;
@@ -17,7 +24,7 @@ public class AddProductToWishListTest extends TestBase
 	@Test(priority=1)
 	public void UserCanSearchForProductsWithAutoSuggest() throws InterruptedException {
 		searchPage = new SearchPage(driver);
-		searchPage.ProductSearchUsingAutoSuggest("MacB");
+		searchPage.ProductSearchUsingAutoSuggest("MacBoo");
 		productDetails = new ProductDetailsPage(driver);
 		Assert.assertTrue(productDetails.productNamebreadCrumb.getText().contains(productName));
 	}
@@ -33,7 +40,7 @@ public class AddProductToWishListTest extends TestBase
 	}
 
 	@Test(priority=3)
-	public void UserCanRemoveProductFromCart() {
+	public void UserCanRemoveProductFromWishList() {
 		wishlistObject = new WishlistPage(driver); 
 		wishlistObject.removeProductFromWishlist();
 		

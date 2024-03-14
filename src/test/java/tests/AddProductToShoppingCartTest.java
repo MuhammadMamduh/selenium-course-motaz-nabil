@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.AfterClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,21 +14,38 @@ public class AddProductToShoppingCartTest extends TestBase
 	ProductDetailsPage productDetails;
 	ShoppingCartPage cartPage ; 
 	String productName = "Apple MacBook Pro 13-inch";
+	String productURL;
 
 	@Test(priority=1)
 	public void UserCanSearchForProductsWithAutoSuggest() throws InterruptedException {
 		searchPage = new SearchPage(driver);
-		searchPage.ProductSearchUsingAutoSuggest("MacB");
+		searchPage.ProductSearchUsingAutoSuggest("MacBoo");
+		System.out.println(driver.getCurrentUrl());
 		productDetails = new ProductDetailsPage(driver);
+		System.out.println(driver.getCurrentUrl());
+		productURL = driver.getCurrentUrl();
 		Assert.assertTrue(productDetails.productNamebreadCrumb.getText().contains(productName));
 	}
 
 	@Test(priority=2)
 	public void UserCanAddProductToShoppingCart() throws InterruptedException {
+		String currentURL = driver.getCurrentUrl();
+
+		if (currentURL != productURL)
+		{
+			System.out.println("Sometimes for an unknown reason, the browser gets redirected to the homepage");
+			System.out.println("Current URL: " + currentURL);
+			System.out.println("This code is to handle this issue ...");
+			driver.navigate().to(productURL);
+			System.out.println("Navigating to the Product URL: " + driver.getCurrentUrl());
+		}
+
 		productDetails = new ProductDetailsPage(driver);
+		
 		productDetails.AddToCart();
 		Thread.sleep(1000);
-		driver.navigate().to("http://demo.nopcommerce.com" + "/cart");	
+		driver.navigate().to("http://demo.nopcommerce.com" + "/cart");
+		// Thread.sleep(1000);
 		cartPage = new ShoppingCartPage(driver);
 		Assert.assertTrue(cartPage.totalLbl.getText().contains("3,600"));
 	}

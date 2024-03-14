@@ -25,8 +25,8 @@ public class UserRegistrationWithDDTAndDataProvider extends TestBase
 		Thread.sleep(1000);
 		String emailString_2 = Helper.getUniqueEmail();
 		return new Object[][] {
-			{"Moataz" , "Nabil",emailString_1,"123456"},
-			{"Ahmed","Ali",emailString_2,"12345678"}
+			{"Moataz" , "Nabil", emailString_1,"123456"},
+			{"Ahmed","Ali", emailString_2,"12345678"}
 		};
 	}
 
