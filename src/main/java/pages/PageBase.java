@@ -25,9 +25,20 @@ public class PageBase {
 		button.click();
 	}
 	
-	protected static void setTextElementText(WebElement textElement , String value) 
+	protected static void setTextElementText(WebElement textElement , String value)
 	{
-		textElement.sendKeys(value);
+		try
+		{
+			for (char c : value.toCharArray()) {
+				textElement.sendKeys(String.valueOf(c));
+				Thread.sleep(100);
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		
 	}
 	
 	public void scrollToBottom() 
