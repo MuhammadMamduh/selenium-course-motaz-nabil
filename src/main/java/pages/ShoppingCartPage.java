@@ -19,7 +19,7 @@ public class ShoppingCartPage extends PageBase
 	@FindBy(css = "input.qty-input valid")
 	public WebElement quantityTxt;
 
-	@FindBy(css = "td.subtotal")
+	@FindBy(xpath = "//tr[@class='order-subtotal']//child::span[@class='value-summary']")
 	public WebElement totalLbl;
 
 	
@@ -34,7 +34,7 @@ public class ShoppingCartPage extends PageBase
 
 	public void RemoveProductFromCart() {
 		clickButton(removeCheck);
-		clickButton(updateCartBtn);
+		// clickButton(updateCartBtn);
 	}
 
 	public void UpdateProductQuantityInCart(String quantity) {
