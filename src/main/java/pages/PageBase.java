@@ -31,7 +31,7 @@ public class PageBase {
 		{
 			for (char c : value.toCharArray()) {
 				textElement.sendKeys(String.valueOf(c));
-				Thread.sleep(100);
+				Thread.sleep(50);
 			}
 		}
 		catch (Exception e)

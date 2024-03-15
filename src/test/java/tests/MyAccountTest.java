@@ -45,12 +45,14 @@ public class MyAccountTest extends TestBase
 	}
 
 	@Test(priority=2)
-	public void RegisteredUserCanChangePassword() 
+	public void RegisteredUserCanChangePassword() throws Exception
 	{
 		myAccountObject = new MyAccountPage(driver) ; 
 		registerObject.openMyAccountPage();
 		myAccountObject.openChangePasswordPage();
 		myAccountObject.ChangePassword(oldPassword, newPassword);
+		Thread.sleep(1000);
+		System.out.println(myAccountObject.resultLbl.getText());
 		Assert.assertTrue(myAccountObject.resultLbl.getText().contains("Password was changed"));
 	}
 	@Test(priority=3)

@@ -12,8 +12,10 @@ import java.time.Duration;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -76,6 +78,7 @@ public class TestBase extends AbstractTestNGCucumberTests
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		driver.navigate().to("http://demo.nopcommerce.com/");
+		System.out.println("Redirected to the homepageeeeeeeeeeeeeeee");
 	} 
 
 	@AfterSuite
@@ -84,6 +87,12 @@ public class TestBase extends AbstractTestNGCucumberTests
 		driver.quit();
 	}
 
+	@AfterClass
+	public void moveToHomePage()
+	{
+		driver.navigate().to("http://demo.nopcommerce.com/");
+		System.out.println("Redirected to the homepageeeeeeeeeeeeeeee");
+	}
 	// take screenshot when test case fail and add it in the Screenshot folder
 	@AfterMethod
 	public void screenshotOnFailure(ITestResult result) 
