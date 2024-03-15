@@ -3,7 +3,6 @@ package tests;
 
 
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 
 import org.testng.Assert;
@@ -15,7 +14,6 @@ import com.opencsv.CSVWriter;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.UserRegistrationPage;
-import utilities.Helper;
 
 public class UserRegistrationTestWithDDTAndCSV extends TestBase
 {
