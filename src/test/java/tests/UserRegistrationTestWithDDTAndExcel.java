@@ -35,7 +35,7 @@ public class UserRegistrationTestWithDDTAndExcel extends TestBase
 		registerObject = new UserRegistrationPage(driver); 
 		registerObject.userRegistration(firstname,lastname,email,password);
 		Assert.assertTrue(registerObject.successMessage.getText().contains("Your registration completed"));
-		registerObject.userLogout();
+		// registerObject.userLogout();
 		homeObject.openLoginPage();
 		loginObject = new LoginPage(driver); 
 		loginObject.UserLogin(email,password);
