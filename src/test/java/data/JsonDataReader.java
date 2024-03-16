@@ -9,14 +9,20 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import utilities.Helper;
+
 
 public class JsonDataReader 
 {
-	public String firstname, lastname , email , password  ; 
+	public String firstname, lastname , email , password;
 
 	public void JsonReader() throws IOException, ParseException 
 	{
-		String filePath = System.getProperty("user.dir")+"/src/test/java/data/UserData.json";
+		String filePath = System.getProperty("user.dir") + "/src/test/java/data/UserData.json";
 
 		File srcFile = new File(filePath); 
 
@@ -32,7 +38,8 @@ public class JsonDataReader
 			lastname = (String) person.get("lastname"); 
 			System.out.println(lastname);
 
-			email = (String) person.get("email"); 
+			email = (String) person.get("email");
+			email = Helper.getUniqueEmail();
 			System.out.println(email);
 
 			password = (String) person.get("password"); 
