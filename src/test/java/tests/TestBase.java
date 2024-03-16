@@ -3,6 +3,9 @@ package tests;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.remote.DesiredCapabilities;
+// import org.openqa.selenium.phantomjs.PhantomJSDriver; // not working
+// import org.openqa.selenium.phantomjs.PhantomJSDriverService; // not working
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -41,6 +44,9 @@ public class TestBase extends AbstractTestNGCucumberTests
 
 	public static ChromeOptions chromeOption() {
 		ChromeOptions options = new ChromeOptions();
+		// If you want to run the browser in the headless mode
+		// options.addArguments("--headless");
+		// options.addArguments("--window-size=1920,1080");
 		options.setAcceptInsecureCerts(true);
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
 		chromePrefs.put("profile.default.content_settings.popups", 0);
@@ -73,11 +79,22 @@ public class TestBase extends AbstractTestNGCucumberTests
 		else if (browserName.equalsIgnoreCase("safari")) {
 			driver = new SafariDriver(); 
 		}
+		// not working (note that PhantomJS is deprecated)
+		// else if (browserName.equalsIgnoreCase("phantomjs")) {
+		// 	DesiredCapabilities caps = new DesiredCapabilities();
+		// 	caps.setJavascriptEnabled(true) ;
+		// 	caps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+		// 	System.getProperty("user,dir") +"/drivers/phantomjs,exe");
+		// String[] phantomJsArgs = {"--web-security=no", "--ignore-ssl-errors=yes"};
+		// caps.setCapability(PhantomJSDriverService.PHANTOMJS_CLI_ARGS, PhantomJsArgs);
+		// 	driver = new PhantomJSDriver();
+		// }
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		driver.navigate().to("http://demo.nopcommerce.com/");
-		System.out.println("Redirected to the homepageeeeeeeeeeeeeeee");
+		System.out.println("Redirected to the HOMEPAGE");
+		System.out.println("________________________________________");
 	} 
 
 	@AfterSuite
