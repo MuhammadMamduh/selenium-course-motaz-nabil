@@ -1,6 +1,5 @@
 package tests;
 
-import org.junit.AfterClass;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
