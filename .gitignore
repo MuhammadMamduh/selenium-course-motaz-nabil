@@ -11,7 +11,7 @@
 src/main/java/properties/userdata.properties
 src/test/java/data/UserData.csv
 src/test/java/data/UserData.xlsx
-src/test/java/tests/TestBase.java
+src/test/java/data/UserData.json
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
