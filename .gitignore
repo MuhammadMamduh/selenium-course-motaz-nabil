@@ -7,6 +7,12 @@
 # BlueJ files
 *.ctxt
 
+*.DS_Store
+src/main/java/properties/userdata.properties
+src/test/java/data/UserData.csv
+src/test/java/data/UserData.xlsx
+src/test/java/tests/TestBase.java
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
